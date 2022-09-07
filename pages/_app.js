@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import { LocProvider } from "../context/locationProvider";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  return (
+    <LocProvider>
+      <Component {...pageProps} />
+    </LocProvider>
+  );
 }
 
-export default MyApp
+export default App;
