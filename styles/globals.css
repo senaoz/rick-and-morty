@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply prose prose-sm dark:prose-invert   md:prose-base bg-neutral-50 dark:bg-gray-800 max-w-6xl mx-auto;
+}
+
+a {
+    @apply no-underline;
+}
+
+p {
+    @apply m-0;
+}
