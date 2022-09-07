@@ -1,34 +1,38 @@
-import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import CharacterCard from "../../components/character-card";
+import { useLoc } from "../../context/locationProvider";
 
 // Lists residents based on location in grid view. Shows name, image and species information.
 // There are status indicators as follows; ( Alive: green, Dead: red, Unknown: yellow )
 
 export async function getStaticProps({ params }) {
-  const response = await fetch(
+  const location = await fetch(
     "https://rickandmortyapi.com/api/location/" + params.id
   )
     .then((res) => res.json())
     .then((data) => {
       return data;
+    })
+    .catch((err) => {
+      console.log(err);
     });
 
-  let residents = [];
+  const residents = [];
 
-  for (let i = 0; i < response.residents.length; i++) {
-    const id = response?.residents[i]?.split("/").pop();
-    //https://rickandmortyapi.com/api/character/38
+  for (let i = 0; i < location.residents.length; i++) {
+    const id = location?.residents[i]?.split("/").pop();
     await fetch(process.env.URL + "/character/" + id)
       .then((res) => res.json())
       .then((data) => {
         residents.push(data);
       });
   }
+
   return {
     props: {
-      location: response,
-      residents,
+      id: params.id,
+      residents: residents,
+      location,
     },
   };
 }
@@ -47,7 +51,9 @@ export async function getStaticPaths() {
   }
 
   const paths = locations.map((location) => ({
-    params: { id: location.id.toString() },
+    params: {
+      id: location.id.toString(),
+    },
   }));
 
   return {
@@ -56,7 +62,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Residents({ location, residents }) {
+export default function Residents({ id, residents, location }) {
   const [status, setStatus] = useState("All");
 
   const filteredResidents = residents.filter((item) => {

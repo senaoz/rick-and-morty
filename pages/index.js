@@ -1,6 +1,7 @@
 import { useLoc } from "../context/locationProvider";
 import { useContext, useState } from "react";
 import Link from "next/link";
+import { getCharacters } from "../context/characterProvider";
 
 // Lists locations. It is in list view. Shows type, dimension and resident count information.
 // Clicking on any location opens the residents page.

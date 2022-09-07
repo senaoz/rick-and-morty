@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
+import { useContext } from "react";
 
 export default function Layout({ children }) {
   return (
@@ -25,9 +26,10 @@ export default function Layout({ children }) {
         </Link>
       </header>
       <main>{children}</main>
-      <footer className="pt-6 pb-10">
+      <footer className="pt-6 pb-10 text-gray-400">
+        <p>Dark mode support is enabled via system preferences.</p>
         <a
-          href="https://www.linkedin.com/in/zsenaoz/"
+          href="https://github.com/senaoz"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400"
