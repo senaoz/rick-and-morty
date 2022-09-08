@@ -150,8 +150,8 @@ export default function Residents({ residents, location }) {
                 <Link href={`/residents/${location.id}`} key={location.id}>
                   <div className="w-full cursor-pointer  bg-white shadow dark:bg-gray-900 rounded-lg p-4">
                     <h3 className="p-0 m-0">{location.name}</h3>
-                    <p>{location.type}</p>
-                    <p>{location.dimension}</p>
+                    <p>Type: {location.type}</p>
+                    <p>Dimension: {location.dimension}</p>
                     <p>{location.residents.length} residents</p>
                   </div>
                 </Link>
