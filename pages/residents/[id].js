@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CharacterCard from "../../components/character-card";
 import { useLoc } from "../../context/locationProvider";
+import Link from "next/link";
 
 // Lists residents based on location in grid view. Shows name, image and species information.
 // There are status indicators as follows; ( Alive: green, Dead: red, Unknown: yellow )
@@ -62,8 +63,9 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Residents({ id, residents, location }) {
+export default function Residents({ residents, location }) {
   const [status, setStatus] = useState("All");
+  const { locations } = useLoc();
 
   const filteredResidents = residents.filter((item) => {
     if (status === "All") {
@@ -72,6 +74,17 @@ export default function Residents({ id, residents, location }) {
       return item.status.includes(status);
     }
   });
+
+  const randomLocations = [];
+
+  if (locations.length > 0) {
+    for (let i = 0; i < 3; i++) {
+      const randomLocation =
+        locations[Math.floor(Math.random() * locations.length)];
+      randomLocations.push(randomLocation);
+    }
+  }
+  console.log(randomLocations);
 
   return (
     <>
@@ -126,6 +139,28 @@ export default function Residents({ id, residents, location }) {
             There are no residents.
           </h4>
         )}
+      </div>
+      {/* similar locations */}
+      <div>
+        <h2 className="text-2xl font-bold mt-10 mb-5">Similar Locations</h2>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {randomLocations.length > 2 ? (
+            randomLocations.map((location) => {
+              return (
+                <Link href={`/residents/${location.id}`} key={location.id}>
+                  <div className="w-full cursor-pointer  bg-white shadow dark:bg-gray-900 rounded-lg p-4">
+                    <h3 className="p-0 m-0">{location.name}</h3>
+                    <p>{location.type}</p>
+                    <p>{location.dimension}</p>
+                    <p>{location.residents.length} residents</p>
+                  </div>
+                </Link>
+              );
+            })
+          ) : (
+            <>Loading... </>
+          )}
+        </div>
       </div>
     </>
   );
