@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 export default function Layout({ children }) {
   return (
-    <div className="p-10">
+    <div className="p-4 md:p-10">
       <Head>
         <title>Rick and Morty App</title>
         <meta name="description" content="Developed for Aposto" />

@@ -3,22 +3,29 @@
 @tailwind utilities;
 
 body {
-  @apply prose prose-sm dark:prose-invert  md:prose-base bg-neutral-50 dark:bg-gray-800 max-w-screen-2xl mx-auto;
+    @apply prose prose-sm dark:prose-invert
+    md:prose-base bg-neutral-50 dark:bg-gray-800
+    max-w-screen-2xl mx-auto;
 }
 
 a {
-  @apply no-underline;
+    @apply no-underline;
 }
 
 p {
-  @apply m-0;
+    @apply m-0;
 }
 
 .character {
-  width: 280px;
-  min-height: 206px;
+    width: 280px;
+    min-height: 206px;
 }
 
 .title {
-  @apply uppercase tracking-widest text-gray-400 p-0;
+    @apply uppercase md:tracking-widest text-gray-400 p-0 ;
 }
+
+.grid-custom {
+    grid-template-columns: 110px  1fr 1fr 2em;
+}
+

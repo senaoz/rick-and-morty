@@ -17,7 +17,7 @@ export default function Home() {
   });
 
   return (
-    <>
+    <div className="">
       <input
         type="text"
         value={filter}
@@ -25,13 +25,14 @@ export default function Home() {
         placeholder="Search in locations..."
         className="input input-bordered input-sm w-full p-5 rounded-lg shadow dark:bg-gray-600"
       />
-      <ol className="list-none grid gap-6 grid-cols-4 px-5 mb-1">
-        <li className="title">NAME</li>
-        <li className="title">TYPE</li>
-        <li className="title">DIMENSION</li>
-        <li className="title">RESIDENT COUNT</li>
-      </ol>
       <ul className="p-0 m-0">
+        <ol className="list-none grid gap-6 grid-custom sm:grid-cols-4 px-5 mb-1">
+          <li className="title">NAME</li>
+          <li className="title">TYPE</li>
+          <li className="title">DIMENSION</li>
+          <li className="title sm:hidden">R.C.</li>
+          <li className="title hidden sm:block">RESIDENT COUNT</li>
+        </ol>
         {filteredLocations.length === 0 ? (
           <p className="py-4 px-5 font-bold">
             No results found, please do another search.
@@ -39,16 +40,24 @@ export default function Home() {
         ) : (
           filteredLocations.map((location) => (
             <Link href={"/residents/" + location.id} key={location.id}>
-              <li className="bg-emerald-100 cursor-pointer dark:bg-gray-900 rounded-lg capitalize flex items-center py-4 px-5 list-none grid gap-6 grid-cols-4 hover:bg-emerald-200 dark:hover:bg-gray-700">
+              <li
+                className="cursor-pointer
+                bg-emerald-100 dark:bg-gray-900
+                rounded-lg capitalize
+                grid gap-6 grid-custom sm:grid-cols-4
+                py-4 px-5 list-none
+                overflow-x-auto
+                hover:bg-emerald-200 dark:hover:bg-gray-700"
+              >
                 <h4 className="m-0">{location.name}</h4>
                 <p>{location.type}</p>
                 <p>{location.dimension}</p>
-                <p>{location.residents.length}</p>
+                <p className="sm:block">{location.residents.length}</p>
               </li>
             </Link>
           ))
         )}
       </ul>
-    </>
+    </div>
   );
 }
