@@ -1,4 +1,4 @@
-# [Rick and Morty App](https://weather-app-senaoz.vercel.app)
+# [Rick and Morty App](https://rick-and-morty-senaoz.vercel.app)
 
 This project has responsive design and dark mode support.
 
