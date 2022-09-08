@@ -34,7 +34,7 @@ export default function Layout({ children }) {
           rel="noopener noreferrer"
           className="text-gray-400"
         >
-          Developed by Sena Oz.
+          Sena Oz
         </a>
       </footer>
     </div>
