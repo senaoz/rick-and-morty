@@ -15,6 +15,12 @@ A simple Rick and Morty Wiki app that allows you to explore the characters and l
 
 **Residents:** Lists all characters that reside in a specific location. Displays information such as name, species, type, gender, and origin. Includes a status indicator (Alive: green, Dead: red, Unknown: yellow)
 
+
+## Screenshots
+
+<img width="25%" alt="Screen Shot 2022-09-08 at 17 44 45" src="https://user-images.githubusercontent.com/66164676/189153623-a93d22cf-f14a-4397-a337-94e310127766.jpg"><img width="75%" alt="Screen Shot 2022-09-08 at 17 44 45" src="https://user-images.githubusercontent.com/66164676/189153637-20e9a9c0-21a4-4bdb-a7da-5e6d4f02e997.png">
+
+
 ## Running the App
 
 - Clone the repository to your local machine
@@ -25,7 +31,3 @@ A simple Rick and Morty Wiki app that allows you to explore the characters and l
 ## API
 
 The app uses The Rick and Morty API to retrieve data about the characters and locations.
-
-## Screenshots
-
-<img width="25%" alt="Screen Shot 2022-09-08 at 17 44 45" src="https://user-images.githubusercontent.com/66164676/189153623-a93d22cf-f14a-4397-a337-94e310127766.jpg"><img width="75%" alt="Screen Shot 2022-09-08 at 17 44 45" src="https://user-images.githubusercontent.com/66164676/189153637-20e9a9c0-21a4-4bdb-a7da-5e6d4f02e997.png">
